@@ -1,0 +1,100 @@
+.video-grid-container{
+    display : grid;
+    grid-template-columns:repeat(auto-fill, 300px);
+    grid-auto-rows: 300px;
+    background-color: gray;
+}
+
+video{
+    border-radius: 3px;
+    background-color: black;
+    object-fit: cover;
+}
+
+.icon-bar {
+  width: 100%;
+  background-color: #cbd5db;
+  overflow: auto;
+}
+
+.icon-bar button {
+  float: left;
+  width: 20%;
+  text-align: center;
+  padding: 12px 0;
+  transition: all 0.3s ease;
+  color: black;
+  background-color: yellow;
+  font-size: 36px;
+}
+
+.icon-bar button:hover {
+  background-color: gray;
+}
+
+
+/*==========================================*/
+
+
+/* This css file is for all home pages and posts */
+
+body {
+  background: #fafafa;
+  color: #333333;
+  margin-top: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #444444;
+}
+
+ul {
+  margin: 0;
+}
+
+.bg-steel {
+  background-color: #5f788a;
+}
+/* this is for the side navigation bar */
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: relative;
+  z-index: 1;
+  float:right;
+  right: 0;
+  text-align:center;
+  color: white;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 10px;
+  text-decoration: none;
+  font-size: 25px;
+  color:  white;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #ffffff;
+}
+/* this is for the top navigation bar */
+.site-header .navbar-nav .nav-link {
+  color: #cbd5db;
+}
+button{
+    color: white;
+    border:none;
+    background-color:#5f788a;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active .sidenav:active{
+  font-weight: 500;
+}
+
