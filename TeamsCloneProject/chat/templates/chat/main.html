@@ -7,21 +7,19 @@
     <title>TClone</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" >
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 </head>
 <body>
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                      <a class="nav-link"><i class="fas fa-home"></i> Home</a>
-
-                    </li>
                     <li>
                         <div style="float:right;" class="nav-link">
                             <button class="bg-dark" id="btn-toggle-audio"><i class="fas fa-microphone" style="font-size:20px;"></i></button>
                             <button class="bg-dark" id="btn-toggle-video"><i class="fas fa-video" style="font-size:20px;"></i></button>
+                            <button class="bg-dark" id="main" onclick="openNav()"><i class="far fa-comments" style="font-size:20px;"></i></button>
+<!--                         <button class="bg-dark" id="main" onclick="{% static 'js/main.js/openNav()' %}"><i class="far fa-comments" style="font-size:20px;"></i></button>-->
                         </div>
                     </li>
                   </ul>
@@ -34,15 +32,16 @@
 </div>
 <div>
     <div id="video-container">
-<!--        <div class="icon-bar">-->
 
         <div>
-            <video id="local-video" style="float:left; " autoplay playsinline></video>
+            <video id="local-video" style="float:left;" poster="{% static 'images/profile.png' %}" controls  width="590px" height="480px" autoplay playsinline></video>
         </div>
 
     </div>
-        <div class="sidenav bg-dark">
+        <div class="sidenav bg-dark" id="mySidebar">
             <h3 style="color:white">CHAT</h3>
+             <button class="closebtn bg-dark" onclick="closeNav()">×</button>
+
             <div id="messages">
                 <ul id="message-list" class="navbar-nav mr-auto"></ul>
             </div>

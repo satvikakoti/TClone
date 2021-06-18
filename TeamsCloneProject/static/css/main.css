@@ -1,35 +1,18 @@
 .video-grid-container{
     display : grid;
     grid-template-columns:repeat(auto-fill, 300px);
+    width:590px;
+    height:480px;
     grid-auto-rows: 300px;
     background-color: gray;
 }
 
 video{
     border-radius: 3px;
-    background-color: black;
+    width:590px;
+    height:480px;
     object-fit: cover;
-}
 
-.icon-bar {
-  width: 100%;
-  background-color: #cbd5db;
-  overflow: auto;
-}
-
-.icon-bar button {
-  float: left;
-  width: 20%;
-  text-align: center;
-  padding: 12px 0;
-  transition: all 0.3s ease;
-  color: black;
-  background-color: yellow;
-  font-size: 36px;
-}
-
-.icon-bar button:hover {
-  background-color: gray;
 }
 
 
@@ -55,31 +38,7 @@ ul {
 .bg-steel {
   background-color: #5f788a;
 }
-/* this is for the side navigation bar */
-.sidenav {
-  height: 100%;
-  width: 200px;
-  position: relative;
-  z-index: 1;
-  float:right;
-  right: 0;
-  text-align:center;
-  color: white;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
 
-.sidenav a {
-  padding: 10px;
-  text-decoration: none;
-  font-size: 25px;
-  color:  white;
-  display: block;
-}
-
-.sidenav a:hover {
-  color: #ffffff;
-}
 /* this is for the top navigation bar */
 .site-header .navbar-nav .nav-link {
   color: #cbd5db;
@@ -98,3 +57,52 @@ button{
   font-weight: 500;
 }
 
+/* Chat side navigation -- this is for the side navigation bar */
+.sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  padding-top:100px;
+  z-index: 10;
+  float:right;
+  top:0;
+  right: 0;
+  text-align:center;
+  color: white;
+  overflow-x: hidden;
+  transition: all 0.5s ease;
+  background-color: #5f788a;
+}
+
+.sidenav a {
+  padding: 10px;
+  text-decoration: none;
+  font-size: 25px;
+  color:  white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #ffffff;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 25px;
+  margin-left: 50px;
+}
+
+
+#main {
+  transition: margin-right .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
