@@ -1,9 +1,10 @@
 console.log('in main.js')
 
 var mapPeers = {};
+var mapScreenPeers = [];
 var usernameInput = document.querySelector('#username');
 var btnJoin = document.querySelector('#btn-join');
-
+var shareButton = document.getElementById('btn-share-screen');
 var username;
 var webSocket;
 
@@ -133,6 +134,7 @@ var userMedia = navigator.mediaDevices.getUserMedia(constraints)
             btnToggleVideo.innerHTML = '<i class="fas fa-video-slash" style="font-size:20px;"></i>';
         });
 
+
     })
     .catch(error =>{
         console.log('Error accessing media devices!', error);
@@ -169,10 +171,29 @@ function sendSignal(action, message)
      webSocket.send(jsonStr);
 }
 
+var ICE_config = {
+  'iceServers': [
+    {
+      'url': 'stun:stun.l.google.com:19302'
+    },
+    {
+      'url': 'turn:192.158.29.39:3478?transport=udp',
+      'credential': 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
+      'username': '28224511:1379330808'
+    },
+    {
+      'url': 'turn:192.158.29.39:3478?transport=tcp',
+      'credential': 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
+      'username': '28224511:1379330808'
+    }
+  ]
+}
+
 function createOfferer(peerUsername, receiver_channel_name)
 {
     // Works only when devices are connected to same network; hence passing null into RTCPeerConnection
-    var peer = new RTCPeerConnection(null);
+//    var peer = new RTCPeerConnection(null);
+    var peer = new RTCPeerConnection(ICE_config);
     addLocalTracks(peer);
 
     var dc = peer.createDataChannel('channel');
@@ -190,6 +211,8 @@ function createOfferer(peerUsername, receiver_channel_name)
         var iceConnectionState = peer.iceConnectionState;
         if(iceConnectionState === 'failed'|| iceConnectionState === 'disconnected' || iceConnectionState === 'closed'){
             delete mapPeers[peerUsername];
+            var index = mapScreenPeers.findIndex(remoteVideo);
+            mapScreenPeers.splice(index,1);
             if(iceConnectionState != 'closed')
             {
                 peer.close();
@@ -220,8 +243,10 @@ function createOfferer(peerUsername, receiver_channel_name)
 
 function addLocalTracks(peer){
     localStream.getTracks().forEach(track => {
+//        mapScreenPeers.push(peer.addTrack(track, localStream));
         peer.addTrack(track, localStream);
     });
+    mapScreenPeers = peer.getSenders();
     return;
 }
 
@@ -236,7 +261,8 @@ function dcOnMessage(event){
 
 function createAnswerer(offer, peerUsername, receiver_channel_name)
 {
-    var peer = new RTCPeerConnection(null);
+//    var peer = new RTCPeerConnection(null);
+    var peer = new RTCPeerConnection(ICE_config);
     addLocalTracks(peer);
 
     var remoteVideo = createVideo(peerUsername);
@@ -257,6 +283,8 @@ function createAnswerer(offer, peerUsername, receiver_channel_name)
         var iceConnectionState = peer.iceConnectionState;
         if(iceConnectionState === 'failed'|| iceConnectionState === 'disconnected' || iceConnectionState === 'closed'){
             delete mapPeers[peerUsername];
+            var index = mapScreenPeers.findIndex(remoteVideo);
+            mapScreenPeers.splice(index,1);
             if(iceConnectionState != 'closed')
             {
                 peer.close();
@@ -288,7 +316,6 @@ function createAnswerer(offer, peerUsername, receiver_channel_name)
         });
 }
 
-
 function createVideo(peerUsername){
     var videoContainer = document.querySelector('#video-container');
     var remoteVideo = document.createElement('video');
@@ -303,7 +330,7 @@ function createVideo(peerUsername){
 }
 
 function setOnTrack(peer, remoteVideo){
-    var remoteStream = new MediaStream()
+    var remoteStream = new MediaStream();
 
     remoteVideo.srcObject = remoteStream;
     peer.addEventListener('track', async(event) =>{
@@ -328,6 +355,48 @@ function getDataChannels(){
     return dataChannels;
 }
 
+console.log(mapScreenPeers);
+
+/* Screen share */
+
+function handleSuccess(stream) {
+  shareButton.disabled = true;
+  var video = document.querySelector('video');
+  const screenTrack = stream.getTracks()[0];
+  video.srcObject = stream;
+    mapScreenPeers.forEach(async s => {
+    if(s.track && s.track.kind === 'video')
+        await s.replaceTrack(screenTrack);
+        s.track.kind = 'screen';
+    });
+  screenTrack.addEventListener('ended', () => {
+    console.log('The user has ended sharing the screen');
+    shareButton.disabled = false;
+    video.srcObject = localStream;
+//    mapScreenPeers[index].srcObject = localStream;
+        mapScreenPeers.forEach(async s => {
+        s.replaceTrack(localStream.getVideoTracks()[0]);
+            s.track.kind = 'video';
+        });
+  });
+}
+
+function handleError(error) {
+  console.log('error');
+}
+
+
+shareButton.addEventListener('click', () => {
+  navigator.mediaDevices.getDisplayMedia({video: true, cursor: true})
+      .then(handleSuccess, handleError);
+});
+
+if ((navigator.mediaDevices && 'getDisplayMedia' in navigator.mediaDevices)) {
+  shareButton.disabled = false;
+} else {
+  console.log('getDisplayMedia is not supported');
+}
+
 
 function openNav() {
   document.getElementById("mySidebar").style.width = "250px";
@@ -338,3 +407,5 @@ function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
   document.getElementById("main").style.marginRight= "0";
 }
+
+

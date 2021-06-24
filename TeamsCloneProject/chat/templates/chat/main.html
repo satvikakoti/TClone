@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="shortcut icon" href="#">
 </head>
 <body>
 
@@ -18,8 +19,9 @@
                         <div style="float:right;" class="nav-link">
                             <button class="bg-dark" id="btn-toggle-audio"><i class="fas fa-microphone" style="font-size:20px;"></i></button>
                             <button class="bg-dark" id="btn-toggle-video"><i class="fas fa-video" style="font-size:20px;"></i></button>
+                            <button class="bg-dark" id="btn-share-screen" style="font-size:20px;"><i class="fas fa-eye"></i></button>
                             <button class="bg-dark" id="main" onclick="openNav()"><i class="far fa-comments" style="font-size:20px;"></i></button>
-<!--                         <button class="bg-dark" id="main" onclick="{% static 'js/main.js/openNav()' %}"><i class="far fa-comments" style="font-size:20px;"></i></button>-->
+
                         </div>
                     </li>
                   </ul>
@@ -48,7 +50,7 @@
             <div>
                 <input id="msg"><button id="btn-send-msg" class="bg-dark">Send Message</button>
             </div>
-            <button id="btn-share-screen" class="bg-dark">Share screen</button>
+
         </div>
 </div>
 
