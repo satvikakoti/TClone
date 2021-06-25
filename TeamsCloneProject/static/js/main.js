@@ -192,8 +192,8 @@ var ICE_config = {
 function createOfferer(peerUsername, receiver_channel_name)
 {
     // Works only when devices are connected to same network; hence passing null into RTCPeerConnection
-//    var peer = new RTCPeerConnection(null);
-    var peer = new RTCPeerConnection(ICE_config);
+   var peer = new RTCPeerConnection(null);
+//     var peer = new RTCPeerConnection(ICE_config);
     addLocalTracks(peer);
 
     var dc = peer.createDataChannel('channel');
@@ -261,8 +261,8 @@ function dcOnMessage(event){
 
 function createAnswerer(offer, peerUsername, receiver_channel_name)
 {
-//    var peer = new RTCPeerConnection(null);
-    var peer = new RTCPeerConnection(ICE_config);
+   var peer = new RTCPeerConnection(null);
+//     var peer = new RTCPeerConnection(ICE_config);
     addLocalTracks(peer);
 
     var remoteVideo = createVideo(peerUsername);
