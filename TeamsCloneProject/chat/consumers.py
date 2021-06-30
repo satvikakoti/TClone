@@ -1,7 +1,9 @@
 import json
 from channels.generic.websocket import AsyncJsonWebsocketConsumer
 
+
 class ChatConsumer(AsyncJsonWebsocketConsumer):
+
     async def connect(self):
         self.room_group_name = 'Test-Room'
 
