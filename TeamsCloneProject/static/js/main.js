@@ -145,8 +145,23 @@ var userMedia = navigator.mediaDevices.getUserMedia(constraints)
     btnSendMsg.addEventListener('click', sendMsgOnClick);
 
 function sendMsgOnClick(){
+
     var message = messageInput.value;
     var li = document.createElement('li');
+    li.style.position = "inline";
+    li.style.marginLeft = "100px";
+    li.style.top = "30px";
+    li.style.bottom = "50px";
+    li.style.zIndex = "1";
+    li.style.display = "block";
+    li.style.width = "135px";
+    li.style.padding = "10px 10px 10px 12px";
+    li.style.marginBottom = "5px";
+    li.style.overflow = "hidden";
+    li.style.marginRight = "4px";
+    li.style.background = "gray";
+    li.style.boxShadow = "0 3px 6px rgba(1,1,1,0.3), 0 3px 6px rgba(1,1,1,0.3)";
+    li.style.borderRadius = "none";
     li.appendChild(document.createTextNode('Me: '+ message));
     messageList.append(li);
 
@@ -255,6 +270,21 @@ function dcOnMessage(event){
     var message = event.data;
 
     var li = document.createElement('li');
+    li.style.position = "inline";
+    li.style.marginRight = "100px";
+    li.style.fontColor = "black";
+    li.style.top = "30px";
+    li.style.bottom = "50px";
+    li.style.zIndex = "1";
+    li.style.display = "block";
+    li.style.width = "135px";
+    li.style.padding = "10px 10px 10px 12px";
+    li.style.marginBottom = "5px";
+    li.style.overflow = "hidden";
+    li.style.marginLeft = "8px";
+    li.style.background = "#C0C0C0";
+    li.style.boxShadow = "0 3px 6px rgba(1,1,1,0.3), 0 3px 6px rgba(1,1,1,0.3)";
+    li.style.borderRadius = "none";
     li.appendChild(document.createTextNode(message));
     messageList.appendChild(li);
 }
@@ -397,7 +427,6 @@ if ((navigator.mediaDevices && 'getDisplayMedia' in navigator.mediaDevices)) {
   console.log('getDisplayMedia is not supported');
 }
 
-
 function openNav() {
   document.getElementById("mySidebar").style.width = "250px";
   document.getElementById("main").style.marginRight = "250px";
@@ -408,4 +437,5 @@ function closeNav() {
   document.getElementById("main").style.marginRight= "0";
 }
 
+/*===========================================*/
 

@@ -14,7 +14,21 @@ video{
     object-fit: cover;
 
 }
+/*.container {
+    padding-top: 50px;
+    width: 50px;
+    margin: 0;
+}*/
 
+input {
+    font-size: 12px;
+    background-color:#343a40;
+    border-bottom:3px solid gray;
+    box-shadow:0 3px 6px rgba(255,255,255,0.3);
+    caret-color: white;
+    width:135px;
+    color:white;
+}
 
 /*==========================================*/
 
@@ -24,7 +38,7 @@ video{
 body {
   background: #fafafa;
   color: #333333;
-  margin-top: 0;
+
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -45,8 +59,8 @@ ul {
 }
 button{
     color: white;
-    border:none;
     background-color:#5f788a;
+    border: none;
 }
 
 .site-header .navbar-nav .nav-link:hover {
@@ -60,7 +74,7 @@ button{
 /* Chat side navigation -- this is for the side navigation bar */
 .sidenav {
   height: 100%;
-  width: 250px;
+  width: 300px;
   position: fixed;
   padding-top:100px;
   z-index: 10;
@@ -89,7 +103,7 @@ button{
 
 .sidenav .closebtn {
   position: absolute;
-  top: 0;
+  top: 50px;
   right: 25px;
   font-size: 25px;
   margin-left: 50px;
