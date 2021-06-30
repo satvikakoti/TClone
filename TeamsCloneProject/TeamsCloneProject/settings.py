@@ -132,6 +132,9 @@ ASGI_APPLICATION = 'TeamsCloneProject.asgi.application'
 
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer"
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+        'CONFIG': {
+            "hosts": [('https://msteamclone.herokuapp.com/')],
+        },
     }
 }
