@@ -1,6 +1,6 @@
 from django.shortcuts import render
-import speech_recognition as sr
-import pyttsx3
+# import speech_recognition as sr
+# import pyttsx3
 
 
 # Create your views here.
