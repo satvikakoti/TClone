@@ -132,10 +132,10 @@ ASGI_APPLICATION = 'TeamsCloneProject.asgi.application'
 
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer",
-        'CONFIG': {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
             "hosts": [('https://msteamclone.herokuapp.com/')],
         },
-    }
+    },
 }
 django_heroku.settings(locals())
