@@ -26,7 +26,7 @@ SECRET_KEY = '746f%-1byost1&l4jcn+8_4@%gg7&ytp_mm294xrik7arg*rzh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://msteamclone.herokuapp.com/']
+ALLOWED_HOSTS = ['https://msteamclone.herokuapp.com/','https://tclone.azurewebsites.net']
 
 
 # Application definition
@@ -135,7 +135,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [('https://msteamclone.herokuapp.com/')],
+            "hosts": [('https://msteamclone.herokuapp.com/')],[('https://tclone.azurewebsites.net')],
         },
     },
 }
