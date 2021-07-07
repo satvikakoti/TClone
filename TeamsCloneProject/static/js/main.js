@@ -226,8 +226,6 @@ function createOfferer(peerUsername, receiver_channel_name)
         var iceConnectionState = peer.iceConnectionState;
         if(iceConnectionState === 'failed'|| iceConnectionState === 'disconnected' || iceConnectionState === 'closed'){
             delete mapPeers[peerUsername];
-//            var index = mapScreenPeers.findIndex(remoteVideo);
-//            mapScreenPeers.splice(index,1);
             if(iceConnectionState != 'closed')
             {
                 peer.close();
@@ -258,7 +256,6 @@ function createOfferer(peerUsername, receiver_channel_name)
 
 function addLocalTracks(peer){
     localStream.getTracks().forEach(track => {
-//        mapScreenPeers.push(peer.addTrack(track, localStream));
         peer.addTrack(track, localStream);
     });
     mapScreenPeers = peer.getSenders();
@@ -313,8 +310,6 @@ function createAnswerer(offer, peerUsername, receiver_channel_name)
         var iceConnectionState = peer.iceConnectionState;
         if(iceConnectionState === 'failed'|| iceConnectionState === 'disconnected' || iceConnectionState === 'closed'){
             delete mapPeers[peerUsername];
-//            var index = mapScreenPeers.findIndex(remoteVideo);
-//            mapScreenPeers.splice(index,1);
             if(iceConnectionState != 'closed')
             {
                 peer.close();
@@ -415,7 +410,6 @@ function handleError(error) {
   console.log('error');
 }
 
-
 shareButton.addEventListener('click', () => {
   navigator.mediaDevices.getDisplayMedia({video: true, cursor: true})
       .then(handleSuccess, handleError);
@@ -427,6 +421,7 @@ if ((navigator.mediaDevices && 'getDisplayMedia' in navigator.mediaDevices)) {
   console.log('getDisplayMedia is not supported');
 }
 
+/* Animations for chat window */
 function openNav() {
   document.getElementById("mySidebar").style.width = "250px";
   document.getElementById("main").style.marginRight = "250px";
@@ -438,4 +433,3 @@ function closeNav() {
 }
 
 /*===========================================*/
-
