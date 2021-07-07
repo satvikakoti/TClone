@@ -135,9 +135,9 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [('https://msteamclone.herokuapp.com/')],
-            [('https://tclone.azurewebsites.net')], 
-            [('redis://:4Do4w0lEgNUlSEsW8TiCpGONFdtOkmIl@redis-13168.c251.east-us-mz.azure.cloud.redislabs.com:13168')]
+            "hosts": [('https://msteamclone.herokuapp.com/'),
+            ('https://tclone.azurewebsites.net'), 
+            ('redis://:4Do4w0lEgNUlSEsW8TiCpGONFdtOkmIl@redis-13168.c251.east-us-mz.azure.cloud.redislabs.com:13168')],
         },
     },
 }
