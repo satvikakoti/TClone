@@ -44,6 +44,11 @@ function webSocketOnMessage(event)
 
 }
 
+document.getElementById('btn-cut-call').addEventListener('click', () =>{
+    console.log('pressed now!');
+    window.history.back();
+});
+
 btnJoin.addEventListener('click', () =>{
     username= usernameInput.value;
 
@@ -206,7 +211,7 @@ var ICE_config = {
 
 function createOfferer(peerUsername, receiver_channel_name)
 {
-    // Works only when devices are connected to same network; hence passing null into RTCPeerConnection
+// Works only when devices are connected to same network; hence passing null into RTCPeerConnection
 //    var peer = new RTCPeerConnection(null);
     var peer = new RTCPeerConnection(ICE_config);
     addLocalTracks(peer);
@@ -241,7 +246,6 @@ function createOfferer(peerUsername, receiver_channel_name)
         sendSignal('new-offer',{
             'sdp' : peer.localDescription,
             'receiver_channel_name': receiver_channel_name
-
         });
 
     });
@@ -410,6 +414,7 @@ function handleError(error) {
   console.log('error');
 }
 
+
 shareButton.addEventListener('click', () => {
   navigator.mediaDevices.getDisplayMedia({video: true, cursor: true})
       .then(handleSuccess, handleError);
@@ -421,7 +426,6 @@ if ((navigator.mediaDevices && 'getDisplayMedia' in navigator.mediaDevices)) {
   console.log('getDisplayMedia is not supported');
 }
 
-/* Animations for chat window */
 function openNav() {
   document.getElementById("mySidebar").style.width = "250px";
   document.getElementById("main").style.marginRight = "250px";
