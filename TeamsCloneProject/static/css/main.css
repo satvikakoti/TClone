@@ -19,21 +19,6 @@ video{
     margin-top:10px;
     margin-bottom:10px;
 }
-
-input {
-    font-size: 15px;
-    background-color:#33ccc5;
-    border-bottom:3px solid black;
-    border-top:none;
-    border-left:none;
-    border-right:none;
-    box-shadow:0 3px 6px rgba(1,1,1,1);
-    caret-color: black;
-    width:135px;
-    color:black;
-    left: 100px;
-}
-
 /*==========================================*/
 
 
