@@ -133,8 +133,6 @@ var userMedia = navigator.mediaDevices.getUserMedia(constraints)
             }
             btnToggleVideo.innerHTML = '<i class="fas fa-video-slash" style="font-size:20px;"></i>';
         });
-
-
     })
     .catch(error =>{
         console.log('Error accessing media devices!', error);
@@ -206,8 +204,6 @@ var ICE_config = {
 
 function createOfferer(peerUsername, receiver_channel_name)
 {
-    // Works only when devices are connected to same network; hence passing null into RTCPeerConnection
-//    var peer = new RTCPeerConnection(null);
     var peer = new RTCPeerConnection(ICE_config);
     addLocalTracks(peer);
 
@@ -226,8 +222,8 @@ function createOfferer(peerUsername, receiver_channel_name)
         var iceConnectionState = peer.iceConnectionState;
         if(iceConnectionState === 'failed'|| iceConnectionState === 'disconnected' || iceConnectionState === 'closed'){
             delete mapPeers[peerUsername];
-            var index = mapScreenPeers.findIndex(remoteVideo);
-            mapScreenPeers.splice(index,1);
+//            var index = mapScreenPeers.findIndex(remoteVideo);
+//            mapScreenPeers.splice(index,1);
             if(iceConnectionState != 'closed')
             {
                 peer.close();
@@ -313,8 +309,8 @@ function createAnswerer(offer, peerUsername, receiver_channel_name)
         var iceConnectionState = peer.iceConnectionState;
         if(iceConnectionState === 'failed'|| iceConnectionState === 'disconnected' || iceConnectionState === 'closed'){
             delete mapPeers[peerUsername];
-            var index = mapScreenPeers.findIndex(remoteVideo);
-            mapScreenPeers.splice(index,1);
+//            var index = mapScreenPeers.findIndex(remoteVideo);
+//            mapScreenPeers.splice(index,1);
             if(iceConnectionState != 'closed')
             {
                 peer.close();
@@ -438,4 +434,3 @@ function closeNav() {
 }
 
 /*===========================================*/
-
