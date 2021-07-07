@@ -18,6 +18,12 @@ def video_view(request):
     return render(request, 'chat/main.html', context=context)
 
 
+def join_view(request):
+    context = {}
+
+    return render(request, 'chat/joinroom.html', context=context)
+
+
 '''r = sr.Recognizer()
 
 
