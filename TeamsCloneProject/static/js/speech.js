@@ -1,7 +1,6 @@
 var SpeechRecognition = window.webkitSpeechRecognition;
 
 var recognition = new SpeechRecognition();
-var reply;
 var Textbox;
 var msg;
 var voices;
@@ -34,12 +33,7 @@ var transcript = event.results[current][0].transcript;
     if(Content=="yes")
     {
         var newContent = askJoinRoom();
-//        if(newContent=="yes")
             location.href = 'video/';
-//        else{
-//            msg.text = 'Bye! See you!';
-//            speechSynthesis.speak(msg);
-//        }
 
     }
     else if(Content=="no")
