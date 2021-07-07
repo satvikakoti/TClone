@@ -1,3 +1,4 @@
 django
 django-channels
 gunicorn
+django_heroku
