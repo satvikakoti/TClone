@@ -1,4 +1,4 @@
 django
 django-channels
-gunicorn
+channels_redis
 django_heroku
